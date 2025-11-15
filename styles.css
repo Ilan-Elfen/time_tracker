@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: transparent;
+  user-select: none;
+}
+
+#tracker-widget {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+              0 2px 4px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  display: flex;
+  height: 50px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#drag-handle {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0 8px;
+  cursor: move;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  -webkit-app-region: drag;
+}
+
+#drag-handle:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.drag-icon {
+  fill: rgba(255, 255, 255, 0.6);
+}
+
+.tracker-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 10px;
+  -webkit-app-region: no-drag;
+}
+
+.custom-select-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+#custom-select-trigger {
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+#custom-select-trigger:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+#custom-select-trigger.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+#custom-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.custom-option {
+  padding: 8px 12px;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.custom-option:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.custom-option:first-child {
+  border-radius: 6px 6px 0 0;
+}
+
+.custom-option:last-child {
+  border-radius: 0 0 6px 6px;
+}
+
+#timer-display {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  padding: 8px 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+#timer-display:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#timer-display.countdown-mode {
+  color: #f39c12;
+}
+
+.control-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+
+.small-control-btn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.control-btn svg {
+  fill: white;
+  position: absolute;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.control-btn.playing {
+  background: rgba(231, 76, 60, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.control-btn.playing:hover {
+  background: rgba(192, 57, 43, 0.9);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+#timer-display.running {
+  animation: pulse 2s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+#description-input {
+  flex: 1;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+#description-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#description-input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+#countdown-input {
+  width: 80px;
+  padding: 8px 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #f39c12;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+#countdown-input:focus {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: #f39c12;
+  box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2);
+}
+
+#countdown-input::placeholder {
+  color: rgba(243, 156, 18, 0.6);
+}

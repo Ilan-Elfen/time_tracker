@@ -1,0 +1,42 @@
+{
+  "name": "time_tracker",
+  "version": "1.0.0",
+  "main": "main.js",
+  "homepage": "https://github.com/Ilan-Elfen/time_tracker",
+  "scripts": {
+    "start": "GDK_BACKEND=x11 electron .",
+    "build": "electron-builder",
+    "build:linux": "electron-builder --linux",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ilan Elfen <ilan.elfen@gmail.com>",
+  "license": "ISC",
+  "description": "Time tracking widget for Obsidian",
+  "build": {
+    "appId": "com.timetracker.app",
+    "productName": "TimeTracker",
+    "publish": null,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "styles.css"
+    ],
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Utility",
+      "maintainer": "Ilan Elfen <ilan.elfen@gmail.com>"
+    }
+  },
+  "devDependencies": {
+    "electron": "^38.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.1.3"
+  }
+}

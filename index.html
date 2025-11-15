@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="tracker-widget">
+    <div id="drag-handle">
+      <svg class="drag-icon" viewBox="0 0 24 24" width="14" height="14">
+        <path d="M3 9h18v2H3zm0 4h18v2H3z"/>
+      </svg>
+    </div>
+      <button id="calendar-btn" class="control-btn" style="margin-top: 5px; margin-left: 5px;">
+        <svg id="calendar-icon" viewbox="0 -960 960 960" width="20" height="20">
+          <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/>
+        </svg>
+      </button>
+      <div class="tracker-content">
+        <div class="custom-select-wrapper">
+          <div id="custom-select-trigger">Select task...
+          <button id="plus-btn" class="small-control-btn"  style="margin-left:32%;">
+              <svg id="plus-icon" viewBox="0 0 24 24" width="14" height="14" style="margin-top: 2px">
+                <path d="M12 5v14M5 12h14" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </svg>
+          </button>
+          </div>
+          <div id="custom-select-options" style="display: none;"></div>
+
+        </div>
+
+        <input type="text" id="description-input" placeholder="Description (optional)" style="display: none;">
+        <input type="text" id="new-task-input" placeholder="Task name" style="display: none;">
+
+        <div id="timer-display">00:00:00</div>
+        <input type="text" id="countdown-input" placeholder="00:00:00" style="display: none;">
+
+        <button id="toggle-btn" class="control-btn">
+          <svg id="play-icon" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg id="stop-icon" viewBox="0 0 24 24" width="20" height="20" style="display: none;">
+            <rect x="6" y="6" width="12" height="12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="calendar-content">
+            <div class="div" style="background-color: white;">
+              hi
+    
+            </div>
+      </div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
