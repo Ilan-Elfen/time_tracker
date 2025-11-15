@@ -2,7 +2,7 @@
 
 A simple desktop widget for tracking time spent on tasks, built with Electron. Built to help me keep track of what I'm working on throughout the day without having to switch between apps.
 
-![Time Tracker Widget](Screenshot%20from%202025-11-15%2018-09-56.png)
+![Time Tracker Widget](Time_Tracker.png)
 
 ## What it does
 
