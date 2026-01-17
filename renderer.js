@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { powerMonitor } = require('electron');
-const vaultPath = '/home/ilan/Documents/Obsidian Vault/Daily/';
+const vaultPath = 'C:/Users/ilane/Documents/Obisidian/Work/';
 const selectTrigger = document.getElementById('custom-select-trigger');
 const selectOptions = document.getElementById('custom-select-options');
 const toggleBtn = document.getElementById('toggle-btn');
@@ -29,7 +29,7 @@ const IDLE_TIMEOUT = 10 * 60; // 10 minutes in seconds
 let isCountdownMode = false;
 let countdownDuration = 25 * 60 * 1000; // Default 25 minutes in ms
 let countdownRemaining = 0;
-const countdownConfigPath = '/home/ilan/Documents/Obsidian Vault/Daily/countdown_config.json';
+const countdownConfigPath = 'C:/Users/ilane/Documents/Obisidian/Work/countdown_config.json';
 
 // Load saved countdown duration
 try {
@@ -101,7 +101,7 @@ function selectOption(value, text) {
   ipcRenderer.send('resize-window', 50);
 
   // Save selection
-  fs.writeFileSync('/home/ilan/Documents/Obsidian Vault/Daily/current.json', JSON.stringify({working: value}));
+  fs.writeFileSync('C:/Users/ilane/Documents/Obisidian/Work/current.json', JSON.stringify({working: value}));
 }
 
 // Timer functions
@@ -305,7 +305,7 @@ function cancelEntry() {
 }
 
 function appendToLog(entry) {
-  const logPath = '/home/ilan/Documents/Obsidian Vault/Daily/time_log.json';
+  const logPath = 'C:/Users/ilane/Documents/Obisidian/Work/time_log.json';
   let log = [];
   
   try {
@@ -526,8 +526,8 @@ function writeToMarkdownFile(startTimeMs, endTimeMs, description) {
 
 // Update summary.md with daily statistics
 function updateSummary() {
-  const logPath = '/home/ilan/Documents/Obsidian Vault/Daily/time_log.json';
-  const summaryPath = '/home/ilan/Documents/Obsidian Vault/Daily/summary.md';
+  const logPath = 'C:/Users/ilane/Documents/Obisidian/Work/time_log.json';
+  const summaryPath = 'C:/Users/ilane/Documents/Obisidian/Work/summary.md';
 
   // Read time log
   let log = [];

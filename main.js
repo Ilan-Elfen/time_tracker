@@ -17,7 +17,7 @@ function createWindow () {
     alwaysOnTop: true,
     type: 'splash',
     skipTaskbar: false,
-    resizable: false,
+    resizable: true,
     show: false,
     webPreferences: {
       nodeIntegration: true,
