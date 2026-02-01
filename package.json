@@ -26,6 +26,12 @@
       "index.html",
       "styles.css"
     ],
+    "win": {
+      "certificateFile": null,
+      "certificatePassword": null,
+      "signingHashAlgorithms": ["sha256"],
+      "sign": null
+    },
     "linux": {
       "target": ["AppImage", "deb"],
       "category": "Utility",

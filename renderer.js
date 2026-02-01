@@ -4,12 +4,10 @@ const vaultPath = 'C:/Users/ilane/Documents/Obisidian/Work/';
 const selectTrigger = document.getElementById('custom-select-trigger');
 const selectOptions = document.getElementById('custom-select-options');
 const toggleBtn = document.getElementById('toggle-btn');
-const calendarBtn = document.getElementById('calendar-btn');
 const plusBtn = document.getElementById('plus-btn');
 const timerDisplay = document.getElementById('timer-display');
 const playIcon = document.getElementById('play-icon');
 const stopIcon = document.getElementById('stop-icon');
-const calendarIcon = document.getElementById('calendar-icon');
 const plusIcon = document.getElementById('plus-icon');
 const descriptionInput = document.getElementById('description-input');
 const newTaskInput = document.getElementById('new-task-input');
@@ -244,11 +242,11 @@ function stopTimer(autoStop = false) {
       descriptionInput.style.display = 'block';
       descriptionInput.value = '';
 
-      // Ensure window can receive input
+      // Ensure input receives focus
       setTimeout(() => {
         descriptionInput.focus();
-        descriptionInput.click();
-      }, 100);
+        descriptionInput.select();
+      }, 50);
     }
   }
 }
@@ -335,13 +333,14 @@ toggleBtn.addEventListener('click', () => {
   }
 });
 
-calendarBtn.addEventListener('click', () => {
-  if (isCalendarOpen) {
-
-  } else {
-
-  }
-})
+// Calendar button removed - feature not implemented
+// calendarBtn.addEventListener('click', () => {
+//   if (isCalendarOpen) {
+//
+//   } else {
+//
+//   }
+// })
 
 plusBtn.addEventListener('click', () => {
   if (!isNewTaskOpen) {
@@ -640,11 +639,26 @@ function updateSummary() {
 
 // Description input event listener
 descriptionInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+  if (e.key === 'Enter' || e.keyCode === 13) {
     e.preventDefault();
+    e.stopPropagation();
     saveDescription();
-  } else if (e.key === 'Escape') {
+  } else if (e.key === 'Escape' || e.keyCode === 27) {
     e.preventDefault();
+    e.stopPropagation();
+    cancelEntry();
+  }
+});
+
+// Also listen for keyup as backup
+descriptionInput.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter' || e.keyCode === 13) {
+    e.preventDefault();
+    e.stopPropagation();
+    saveDescription();
+  } else if (e.key === 'Escape' || e.keyCode === 27) {
+    e.preventDefault();
+    e.stopPropagation();
     cancelEntry();
   }
 });
